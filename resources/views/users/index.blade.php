@@ -19,10 +19,8 @@
 
         <div class="card-body">
             <div class="card-header">
-                <a href="{{ route('users.create') }}">
-                <button class="btn btn-primary btn-block">
+                <a href="{{ route('users.create') }}" class="btn btn-primary btn-block">
                     Create
-                </button>
                 </a>
             </div>
             <div class="table-responsive">
@@ -34,7 +32,8 @@
                       <th>First Name</th>
                       <th>Last Name</th>
                       <th>Email</th>
-                      <th>Manage</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -46,8 +45,14 @@
                             <td>{{ $user->last_name }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
-                              <a  href="{{ route('users.edit', $user->id) }}" class='btn btn-success'>Edit
-                              </a>
+                              <a href="{{ route('users.edit', $user->id )}}" class="btn btn-success">Edit</a>
+                            </td>
+                            <td>
+                              <form method="POST" action="{{ route('users.destroy', $user->id) }}">
+                                @csrf
+                                @method("DELETE")
+                                <button class="btn btn-danger">Delete</button>
+                              </form>
                             </td>
                         </tr>
                       @endforeach
