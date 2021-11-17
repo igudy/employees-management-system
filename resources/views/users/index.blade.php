@@ -22,7 +22,23 @@
                 <a href="{{ route('users.create') }}" class="btn btn-primary btn-block">
                     Create
                 </a>
+
+                <br>
+            <div class="input-group rounded">
+              <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+              aria-describedby="search-addon" />
+              <span class="input-group-text" id="search-addon">
+                <i class="fas fa-search"></i>
+              </span>
             </div>
+            </div>
+
+
+            {{-- <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form> --}}
+
             <div class="table-responsive">
                 <table class="table">
                   <thead>
