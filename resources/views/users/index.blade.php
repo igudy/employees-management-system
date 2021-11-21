@@ -19,26 +19,23 @@
 
         <div class="card-body">
             <div class="card-header">
+            {{-- Search Bar --}}
+            <form method="GET" action="{{ route('users.index') }}">
+              <div class="input-group rounded">
+                <input type="search" name="search" class="form-control rounded" placeholder="Name/Email" aria-label="Search" aria-describedby="search-addon" />
+                  <button type="submit" class="btn btn-primary">Search</button>
+              </div>
+            </form>
+          {{-- End of Search --}}
+          <br>
+
                 <a href="{{ route('users.create') }}" class="btn btn-primary btn-block">
                     Create
                 </a>
-
                 <br>
-            <div class="input-group rounded">
-              <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-              aria-describedby="search-addon" />
-              <span class="input-group-text" id="search-addon">
-                <i class="fas fa-search"></i>
-              </span>
-            </div>
-            </div>
+          </div>
 
-
-            {{-- <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form> --}}
-
+          {{-- Table Responsive --}}
             <div class="table-responsive">
                 <table class="table">
                   <thead>

@@ -54,7 +54,7 @@
             </a>
             <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                 <div class="bg-white py-2 collapse-inner rounded">
-                    <a class="collapse-item" href="login.html">Country</a>
+                    <a class="collapse-item" href="{{ route('countries.index') }}">Country</a>
                     <a class="collapse-item" href="register.html">State</a>
                     <a class="collapse-item" href="forgot-password.html">City</a>
                 </div>
