@@ -100,10 +100,7 @@
         </div>
     </div>
 
-
 <br>
-
-
 
 {{-- Update Password --}}
 <div class="row">

@@ -1,15 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Backend;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\State;
 use App\Models\Country;
-use App\Http\Requests\CountryStoreRequest;
-use App\Http\Requests\CountryUpdateRequest;
 use Illuminate\Support\Facades\Hash;
 
-
-class CountryController extends Controller
+class StateController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,12 +17,13 @@ class CountryController extends Controller
      */
     public function index(Request $request)
     {
+        $states = State::all();
         $countries = Country::all();
         if ($request->has('search'))
         {
-            $countries = Country::where('country_code', 'like', "%{$request->search}%")->orWhere('name', 'like', "%{$request->search}%")->get();
+            $states = State::where('name', 'like', "%{$request->search}%")->get();
         }
-        return view('countries.index', compact('countries'));
+        return view('states.index', compact('states'));
     }
 
     /**
@@ -33,7 +33,8 @@ class CountryController extends Controller
      */
     public function create()
     {
-        return view('countries.create');
+        $countries = Country::all();
+        return view('states.create', compact('countries'));
     }
 
     /**
@@ -42,14 +43,20 @@ class CountryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CountryStoreRequest $request)
+    public function store(StateStoreRequest $request)
     {
-        Country::create([
-            'country_code' => $request->country_code,
-            'name' => $request->name,
-        ]);
 
-        return redirect()->route('countries.index')->with('message', 'Country Registered Successfully');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
     }
 
     /**
@@ -58,9 +65,9 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Country $country)
+    public function edit($id)
     {
-        return view('countries.edit', compact('country'));
+        //
     }
 
     /**
@@ -70,13 +77,9 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(CountryUpdateRequest $request, Country $country)
+    public function update(Request $request, $id)
     {
-        $country->update([
-            'country_code' => $request->country_code,
-            'name' => $request->name,
-        ]);
-        return redirect()->route('countries.index')->with('message', 'Country Updated Successfully');
+        //
     }
 
     /**
@@ -85,9 +88,8 @@ class CountryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Country $country)
+    public function destroy($id)
     {
-        $country->delete();
-        return redirect()->route('countries.index')->with('message', 'Country Deleted Succesfully');
+        //
     }
 }

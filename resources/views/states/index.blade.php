@@ -6,7 +6,7 @@
     <!-- Page Heading -->
 
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Countries</h1>
+        <h1 class="h3 mb-0 text-gray-800">State</h1>
     </div>
       <div class="card">
 
@@ -20,16 +20,16 @@
         <div class="card-body">
             <div class="card-header">
             {{-- Search Bar --}}
-            <form method="GET" action="{{ route('countries.index') }}">
+            <form method="GET" action="{{ route('states.index') }}">
               <div class="input-group rounded">
-                <input type="search" name="search" class="form-control rounded" placeholder="Name/Email" aria-label="Search" aria-describedby="search-addon" />
+                <input type="search" name="search" class="form-control rounded" placeholder="Search Country" aria-label="Search" aria-describedby="search-addon" />
                   <button type="submit" class="btn btn-primary">Search</button>
               </div>
             </form>
           {{-- End of Search --}}
           <br>
 
-                <a href="{{ route('countries.create') }}" class="btn btn-primary btn-block">
+                <a href="{{ route('states.create') }}" class="btn btn-primary btn-block">
                     Create
                 </a>
                 <br>
@@ -41,21 +41,22 @@
                   <thead>
                     <tr>
                       <th>Id</th>
-                      <th>Country_Code</th>
+                      <th>Country ID</th>
                       <th>Name</th>
+                      <th>Edit</th>
+                      <th>Delete</th>
                     </tr>
                   </thead>
                   <tbody>
-                    @foreach ($countries as $country)
+                    @foreach ($states as $state)
                         <tr>
-                            <td scope="row"> {{ $country->id }}</td>
-                            <td>{{ $country->country_code }}</td>
-                            <td>{{ $country->name }}</td>
+                            <td scope="row"> {{ $state->country->country_id }}</td>
+                            <td>{{ $state->name }}</td>
                             <td>
-                              <a href="{{ route('countries.edit', $country->id )}}" class="btn btn-success">Edit</a>
+                              <a href="{{ route('states.edit', $state->id )}}" class="btn btn-success">Edit</a>
                             </td>
                             <td>
-                              <form method="POST" action="{{ route('countries.destroy', $country->id) }}">
+                              <form method="POST" action="{{ route('states.destroy', $state->id) }}">
                                 @csrf
                                 @method("DELETE")
                                 <button class="btn btn-danger">Delete</button>
