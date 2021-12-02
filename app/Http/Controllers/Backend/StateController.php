@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\State;
 use App\Models\Country;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\StateStoreRequest;
 
 class StateController extends Controller
 {
@@ -45,19 +46,10 @@ class StateController extends Controller
      */
     public function store(StateStoreRequest $request)
     {
-
+        State::create($request->validated());
+        return redirect()->route('states.index')->with('message', 'State Created Successfully');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -65,9 +57,10 @@ class StateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(State $state)
     {
-        //
+        $countries = Country::all();
+        return view('states.edit', compact('state', 'countries'));
     }
 
     /**
@@ -77,9 +70,13 @@ class StateController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StateStoreRequest $request, State $state)
     {
-        //
+          $state->update([
+            'country_id' => $request->country_id,
+            'name' => $request->name,
+        ]);
+        return redirect()->route('states.index')->with('message', 'Updated Successfully');
     }
 
     /**

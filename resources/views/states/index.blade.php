@@ -28,11 +28,10 @@
             </form>
           {{-- End of Search --}}
           <br>
-
-                <a href="{{ route('states.create') }}" class="btn btn-primary btn-block">
-                    Create
-                </a>
-                <br>
+            <a href="{{ route('states.create') }}" class="btn btn-primary btn-block">
+                Create
+            </a>
+            <br>
           </div>
 
           {{-- Table Responsive --}}
@@ -41,7 +40,7 @@
                   <thead>
                     <tr>
                       <th>Id</th>
-                      <th>Country ID</th>
+                      <th>Country Code</th>
                       <th>Name</th>
                       <th>Edit</th>
                       <th>Delete</th>
@@ -50,7 +49,8 @@
                   <tbody>
                     @foreach ($states as $state)
                         <tr>
-                            <td scope="row"> {{ $state->country->country_id }}</td>
+                          <td>{{ $state->id }}</td>
+                            <td scope="row"> {{ $state->country->country_code }}</td>
                             <td>{{ $state->name }}</td>
                             <td>
                               <a href="{{ route('states.edit', $state->id )}}" class="btn btn-success">Edit</a>

@@ -27,4 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::resource('users', UserController::class);
 Route::resource('countries', CountryController::class);
 Route::resource('states', StateController::class);
+Route::resource('cities', CityController::class);
+
+
 Route::post('users/{user}/change-password', [ChangePasswordController::class, 'change_password'])->name('users.change.password');
