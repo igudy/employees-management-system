@@ -56,7 +56,7 @@
                 <div class="bg-white py-2 collapse-inner rounded">
                     <a class="collapse-item" href="{{ route('countries.index') }}">Country</a>
                     <a class="collapse-item" href="{{ route('states.index') }}">State</a>
-                    <a class="collapse-item" href="forgot-password.html">City</a>
+                    <a class="collapse-item" href="{{ route('cities.index') }}">City</a>
                 </div>
             </div>
         </li>
