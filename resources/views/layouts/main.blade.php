@@ -34,7 +34,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">EMPLOYEES MANAGEMENT</div>
+                <div class="#">EMPLOYEES MANAGEMENT</div>
             </a>
 
             <!-- Divider -->
@@ -57,6 +57,7 @@
                     <a class="collapse-item" href="{{ route('countries.index') }}">Country</a>
                     <a class="collapse-item" href="{{ route('states.index') }}">State</a>
                     <a class="collapse-item" href="{{ route('cities.index') }}">City</a>
+                    <a class="collapse-item" href="{{ route('departments.index' )}}">Department</a>
                 </div>
             </div>
         </li>
@@ -72,8 +73,8 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <a class="collapse-item" href="{{ route('users.index') }}">Users</a>
-                        <a class="collapse-item" href="utilities-border.html">Roles</a>
-                        <a class="collapse-item" href="utilities-animation.html">Permissions</a>
+                        <a class="collapse-item" href="#">Roles</a>
+                        <a class="collapse-item" href="#">Permissions</a>
                     </div>
                 </div>
             </li>
