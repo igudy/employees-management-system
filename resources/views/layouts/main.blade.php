@@ -34,7 +34,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="#">EMPLOYEES MANAGEMENT</div>
+                <router-link :to="{name: 'EmployeesIndex'}">Employee Management</router-link>
             </a>
 
             <!-- Divider -->
@@ -42,8 +42,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="#">
-                    <span>Employee Management</span></a>
+                <router-link :to="{name: 'EmployeesIndex'}" class="nav-link">Employee Management</router-link>
             </li>
           <!-- Nav Item - Pages Collapse Menu -->
           <li class="nav-item">

@@ -12,7 +12,14 @@
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="card-header">{{ __('Create New City - Form') }}</div>
+                        <div class="card-header">{{ __('Create New City - Form') }}
+
+                            <span style="float: right;">
+                                <a href="{{ route('cities.index') }}">
+                                    Back
+                                </a>
+                            </span>
+                        </div>
 
                         <div class="card-body">
                             <form method="POST" action="{{ route('cities.store') }}">

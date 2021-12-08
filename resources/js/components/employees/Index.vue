@@ -13,7 +13,7 @@
               <div class="card-header">
               <form>
                 <div class="input-group rounded">
-                  <input type="search" name="search" class="form-control rounded" placeholder="Name/Email" aria-label="Search" aria-describedby="search-addon" />
+                  <input type="search" name="search" class="form-control rounded" placeholder="Search Employee" aria-label="Search" aria-describedby="search-addon" />
                     <button type="submit" class="btn btn-primary">Search</button>
                 </div>
               </form>
