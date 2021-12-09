@@ -2251,6 +2251,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2261,17 +2271,30 @@ __webpack_require__.r(__webpack_exports__);
       countries: [],
       states: [],
       departments: [],
-      cities: []
+      cities: [],
+      form: {
+        first_name: '',
+        last_name: '',
+        middle_name: '',
+        address: '',
+        country_id: '',
+        state_id: '',
+        department_id: '',
+        city_id: '',
+        zip_code: '',
+        birthdate: null,
+        date_hired: null
+      }
     };
   },
   created: function created() {
-    this.getCountries;
+    this.getCountries();
   },
   methods: {
     getCountries: function getCountries() {
       var _this = this;
 
-      axios.get('api/employees/countries').then(function (res) {
+      axios.get('/api/employees/countries').then(function (res) {
         _this.countries = res.data;
       })["catch"](function (error) {
         console.log(console.error);
@@ -38011,6 +38034,77 @@ var render = function () {
                   _vm._v(" "),
                   _vm._m(4),
                   _vm._v(" "),
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c(
+                      "label",
+                      {
+                        staticClass: "col-md-4 col-form-label text-md-right",
+                        attrs: { for: "country" },
+                      },
+                      [
+                        _vm._v(
+                          "\n                                        Country\n                                    "
+                        ),
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-6" }, [
+                      _c(
+                        "select",
+                        {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.form.country_id,
+                              expression: "form.country_id",
+                            },
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            name: "country",
+                            "aria-label": "Default select example",
+                          },
+                          on: {
+                            change: [
+                              function ($event) {
+                                var $$selectedVal = Array.prototype.filter
+                                  .call($event.target.options, function (o) {
+                                    return o.selected
+                                  })
+                                  .map(function (o) {
+                                    var val = "_value" in o ? o._value : o.value
+                                    return val
+                                  })
+                                _vm.$set(
+                                  _vm.form,
+                                  "country_id",
+                                  $event.target.multiple
+                                    ? $$selectedVal
+                                    : $$selectedVal[0]
+                                )
+                              },
+                              function ($event) {
+                                return _vm.getStates()
+                              },
+                            ],
+                          },
+                        },
+                        _vm._l(_vm.countries, function (country) {
+                          return _c(
+                            "option",
+                            {
+                              key: country.id,
+                              domProps: { value: country.id },
+                            },
+                            [_vm._v(_vm._s(country.name))]
+                          )
+                        }),
+                        0
+                      ),
+                    ]),
+                  ]),
+                  _vm._v(" "),
                   _vm._m(5),
                   _vm._v(" "),
                   _vm._m(6),
@@ -38018,8 +38112,6 @@ var render = function () {
                   _vm._m(7),
                   _vm._v(" "),
                   _vm._m(8),
-                  _vm._v(" "),
-                  _vm._m(9),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group row" }, [
                     _c(
@@ -38071,7 +38163,7 @@ var render = function () {
                     ),
                   ]),
                   _vm._v(" "),
-                  _vm._m(10),
+                  _vm._m(9),
                 ]),
               ]),
             ]),
@@ -38239,40 +38331,6 @@ var staticRenderFns = [
           "span",
           { staticClass: "invalid-feedback", attrs: { role: "alert" } },
           [_c("strong")]
-        ),
-      ]),
-    ])
-  },
-  function () {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group row" }, [
-      _c(
-        "label",
-        {
-          staticClass: "col-md-4 col-form-label text-md-right",
-          attrs: { for: "country" },
-        },
-        [
-          _vm._v(
-            "\n                                        Country\n                                    "
-          ),
-        ]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-md-6" }, [
-        _c(
-          "select",
-          {
-            staticClass: "form-control",
-            attrs: { name: "country", "aria-label": "Default select example" },
-          },
-          [
-            _c("option", { attrs: { selected: "" } }, [
-              _vm._v("Select Country"),
-            ]),
-          ]
         ),
       ]),
     ])
