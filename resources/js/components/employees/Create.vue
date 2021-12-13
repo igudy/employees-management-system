@@ -43,7 +43,10 @@
                                 <!-- Middle Name -->
                                 <div class="form-group row">
                                     <label for="middle_name"
-                                    class="col-md-4 col-form-label text-md-right">Middle Name</label>
+                                    class="col-md-4 col-form-label
+                                    text-md-right">
+                                    Middle Name
+                                    </label>
 
                                     <div class="col-md-6">
                                         <input id="middle_name"
@@ -58,7 +61,10 @@
 
                                 <!-- Last Name -->
                                 <div class="form-group row">
-                                    <label for="last_name" class="col-md-4 col-form-label text-md-right">Last Name</label>
+                                    <label for="last_name"
+                                    class="col-md-4 col-form-label text-md-right">
+                                    Last Name
+                                    </label>
 
                                     <div class="col-md-6">
                                         <input id="last_name"
@@ -66,16 +72,16 @@
                                         v-model="form.last_name"
                                         class="form-control"
                                         name="last_name"
-                                        value="" required>
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong></strong>
-                                            </span>
+                                        value="" required />
+
                                     </div>
                                 </div>
 
                                 <!-- Address -->
                                 <div class="form-group row">
-                                    <label for="address" class="col-md-4 col-form-label text-md-right">Address</label>
+                                    <label for="address"
+                                    class="col-md-4 col-form-label text-md-right">
+                                    Address</label>
 
                                     <div class="col-md-6">
                                         <input id="address"
@@ -84,9 +90,7 @@
                                         class="form-control"
                                         name="address"
                                         value="" required>
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong></strong>
-                                            </span>
+
                                     </div>
                                 </div>
 
@@ -138,6 +142,7 @@
                                     </div>
                                 </div>
 
+
                                <!-- City -->
                                 <div class="form-group row">
                                     <label for="city" class="col-md-4 col-form-label text-md-right">
@@ -182,7 +187,9 @@
 
                                 <!-- Zip Code -->
                                 <div class="form-group row">
-                                    <label for="zip_code" class="col-md-4 col-form-label text-md-right">Zip Code</label>
+                                    <label for="zip_code" class="col-md-4 col-form-label text-md-right">
+                                        Zip Code
+                                    </label>
 
                                     <div class="col-md-6">
                                         <input id="zip_code"
@@ -190,10 +197,8 @@
                                         v-model="form.zip_code"
                                         class="form-control"
                                         name="zip_code"
-                                        required>
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong></strong>
-                                            </span>
+                                        required />
+
                                     </div>
                                 </div>
 
@@ -211,7 +216,10 @@
 
                                 <!-- Date Hired -->
                                 <div class="form-group row">
-                                    <label for="date_hired" class="col-md-4 col-form-label text-md-right">Date Hired</label>
+                                    <label for="date_hired"
+                                    lass="col-md-4 col-form-label text-md-right">
+                                    Date Hired
+                                    </label>
 
                                  <div class="col-md-6">
                                         <datepicker
@@ -243,6 +251,8 @@
 
 <script>
 import Datepicker from 'vuejs-datepicker';
+import moment from "moment";
+
 export default {
     components: {
     Datepicker
@@ -265,8 +275,8 @@ export default {
                 department_id: '',
                 city_id: '',
                 zip_code: '',
-                birthdate: null,
-                date_hired: null,
+                birthdate: this.formate_date(this.formate_date.birthdate),
+                date_hired: this.formate_date(this.formate_date.date_hired),
           }
       };
   },
@@ -319,22 +329,27 @@ export default {
 
       storeEmployee(){
           axios
-          .post('/api/employees', {
-              first_name: this.form.first_name,
-              middle_name: this.form.middle_name,
-              last_name: this.form.last_name,
-              address: this.form.address,
-              country_id: this.form.country_id,
-              state_id: this.form.state_id,
-              city_id: this.form.city_id,
-              department_id: this.form.department_id,
-              zip_code: this.zip_code,
-              birthdate: this.birthdate,
-              date_hired: this.date_hired,
-          }).then(res => {
-              console.log(res);
-          })
-      }
+            .post('/api/employees', {
+                first_name: this.form.first_name,
+                middle_name: this.form.middle_name,
+                last_name: this.form.last_name,
+                address: this.form.address,
+                country_id: this.form.country_id,
+                state_id: this.form.state_id,
+                city_id: this.form.city_id,
+                department_id: this.form.department_id,
+                zip_code: this.zip_code,
+                birthdate: this.birthdate,
+                date_hired: this.date_hired,
+            }).then(res => {
+                console.log(res);
+            })
+      },
+      formate_date(value){
+          if(value){
+              return moment(String(value).format("YYMMDD"));
+          }
+      },
   }
 }
 </script>
