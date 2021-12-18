@@ -5,7 +5,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Country;
 use App\Models\Department;
 use App\Models\State;
-use App\Models\City;
 use Illuminate\Http\Request;
 
 class EmployeeDataController extends Controller

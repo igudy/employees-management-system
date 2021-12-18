@@ -25,18 +25,18 @@ class EmployeeStoreRequest extends FormRequest
 
     public function rules()
     {
-        return [
-            'first_name' => ['required'],
-            'middle_name' => ['required'],
-            'last_name' => ['required'],
-            'address' => ['required'],
-            'country_id' => ['required'],
-            'state_id' => ['required'],
-            'city_id' => ['required'],
-            'department_id' => ['required'],
-            'zip_code' => ['required'],
-            'birthdate' => ['required'],
-            'date_hired' => ['required'],
-        ];
+            return [
+                'first_name' => ['required'],
+                'last_name' => ['required'],
+                'middle_name' => ['required'],
+                'address' => ['required'],
+                'country_id' => ['required'],
+                'state_id' => ['required'],
+                'city_id' => ['required'],
+                'department_id' => ['required'],
+                'birthdate' => ['required'],
+                'date_hired' => ['required'],
+                'zip_code' => ['required'],
+            ];
     }
 }
